@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { MdOutlineFastfood } from "react-icons/md";
+// import { MdOutlineFastfood } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 import { AiOutlineLogin } from "react-icons/ai";
 import { AuthContext } from "../providers/AuthProvider";
@@ -18,27 +18,27 @@ const Navbar = () => {
         <div className="navbar">
           {/* Navbar Start */}
           <div className="navbar-start">
+          <Link to="/" className="btn btn-ghost text-xl">
             <img
-              src="/logo-main.png"
+              src="/logo.png"
               alt="Logo"
-              className="w-[60px] h-[40px] hidden md:block"
+              className=" hidden md:block w-[200px]"
             />
-            <Link to="/" className="btn btn-ghost text-xl">
-              PlateMate
+        
             </Link>
           </div>
 
           {/* Navbar Center */}
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">
+            <ul className="menu menu-horizontal px-1 text-lg">
               <li>
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <a href="#aboutUs">About</a>
+              <Link to="/allFoods">All Foods</Link>
               </li>
               <li>
-                <Link to="/mealPlan">Meal Plan</Link>
+                <Link to="/gallery">Gallery</Link>
               </li>
             </ul>
           </div>
