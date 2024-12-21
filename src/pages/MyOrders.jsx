@@ -2,11 +2,12 @@ import  { useState, useEffect, useContext } from 'react';
 import moment from 'moment';
 import axios from 'axios';
 import { AuthContext } from '../providers/AuthProvider';
+import swal from 'sweetalert';
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
   const {user} = useContext(AuthContext);
-
+  const [loading,setLoading] = useState(false)
   // Sample data - in real app this would come from API
   useEffect(() => {
     axios.get(`https://assignment-11-flame.vercel.app/orders/${user.email}`)
@@ -14,9 +15,28 @@ const MyOrders = () => {
   }, []);
 
   const handleDeleteOrder = (orderId) => {
+    setLoading(true)
     // Filter out the deleted order
-    setOrders(orders.filter(order => order._id !== orderId));
-    // In real app, you would also make an API call to delete from backend
+    swal({
+      title: "Are you sure?",
+      text: "Are you sure that you want to remove this item?",
+      icon: "warning",
+      dangerMode: true,
+    })
+    .then(willDelete => {
+      if (willDelete) {
+        axios.delete(`https://assignment-11-flame.vercel.app/orders/${orderId}`)
+        .then(res => {
+          swal("Deleted!", "Order has been deleted!", "success")
+          setOrders(orders.filter(order => order._id !== orderId));
+          setLoading(false)
+        })
+        
+      }
+    });
+
+    
+    
   };
 
  
@@ -37,7 +57,7 @@ const MyOrders = () => {
             <div className="p-6">
               <div className="flex justify-between items-start mb-4">
                 <h2 className="text-xl font-semibold text-gray-800">{order.foodname}</h2>
-                <button
+               {loading? <span className="loading loading-spinner text-error"></span> :  <button
                   onClick={() => handleDeleteOrder(order._id)}
                   className="text-red-500 hover:text-red-700"
                 >
@@ -55,7 +75,7 @@ const MyOrders = () => {
                       d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" 
                     />
                   </svg>
-                </button>
+                </button>}
               </div>
               
               <div className="space-y-2">
