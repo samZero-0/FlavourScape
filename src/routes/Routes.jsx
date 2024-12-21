@@ -10,6 +10,9 @@ import NotFound from "../pages/Notfound";
 import Homepage from "../pages/Homepage";
 import AllFoods from "../pages/AllFoods";
 import SingleFoodPage from "../pages/SingleFoodPage";
+import Purchase from "../pages/Purchase";
+import PrivateRoute from "./PrivateRoute";
+import MyOrders from "../pages/MyOrders";
 
 
   export const router = createBrowserRouter([
@@ -43,6 +46,15 @@ import SingleFoodPage from "../pages/SingleFoodPage";
           path: 'allFoods/:_id',
           loader: ({params}) => fetch(`https://assignment-11-flame.vercel.app/allFoods/${params._id}`),
           element: <SingleFoodPage></SingleFoodPage>
+        },
+        {
+          path: 'purchase/:_id',
+          loader: ({params}) => fetch(`https://assignment-11-flame.vercel.app/allFoods/${params._id}`),
+          element: <PrivateRoute><Purchase></Purchase></PrivateRoute>
+        },
+        {
+          path: 'myOrders',
+          element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
         },
 
 

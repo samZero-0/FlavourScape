@@ -64,6 +64,11 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
+                    <Link to="/myOrders">
+                      My orders
+                    </Link>
+                  </li>
+                  <li>
                     <button onClick={logOut}>Logout</button>
                   </li>
                 </ul>

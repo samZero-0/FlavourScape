@@ -8,7 +8,7 @@ const SingleFoodPage = () => {
       }, []);
       
     const food = useLoaderData();
-    
+    console.log(food._id);
 
     return (
       <div className=" min-h-screen py-8">
@@ -56,7 +56,7 @@ const SingleFoodPage = () => {
                 </span>
               </div>
               <div className="py-5 w-full">
-               <Link to='/'> <button className="btn w-full bg-orange-500 text-white">Purchase</button></Link>
+               <Link to={`/purchase/${food._id}`}> <button className="btn w-full bg-orange-500 text-white">Purchase</button></Link>
               </div>
             </div>
           </div>
