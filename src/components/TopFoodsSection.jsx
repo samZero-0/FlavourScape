@@ -59,7 +59,7 @@ const TopFoodsSection = () => {
                 </div>
               </div>
 
-              <p className="text-gray-600 mb-4 line-clamp-2">
+              <p className="text-gray-600 mb-4 line-clamp-2 h-14">
                 {food.Description}
               </p>
 
@@ -67,7 +67,7 @@ const TopFoodsSection = () => {
                 <div className="text-sm text-gray-500">
                   By <span className="text-orange-500 font-medium">{food.Chef}</span>
                 </div>
-                <Link to='/foodDetails'>
+                <Link to={`/allFoods/${food._id}`}>
                 <button className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors">
                   <FaShoppingCart />
                   <span>Details</span>
