@@ -67,7 +67,18 @@ const Navbar = () => {
                     <Link to="/myOrders">
                       My orders
                     </Link>
+                    </li>
+                    <li>
+                    <Link to="/addFood">
+                    Add food
+                    </Link>
                   </li>
+                  <li>
+                    <Link to="/myFoods">
+                    My Foods
+                    </Link>
+                  </li>
+                  
                   <li>
                     <button onClick={logOut}>Logout</button>
                   </li>
