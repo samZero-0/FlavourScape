@@ -1,16 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { FaUtensils, FaShoppingCart, FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../providers/AuthProvider';
 
 const TopFoodsSection = () => {
   const [foods, setFoods] = useState([]);
+  const {user} = useContext(AuthContext);
+  const currentUserEmail = user?.email;
 
   useEffect(() => {
     axios.get('https://assignment-11-flame.vercel.app/allFoods')
       .then(res => {
         // Sort by SoldCount and get top 6
         const topFoods = res.data
+         .filter(food => food.addedByEmail !== currentUserEmail)
           .sort((a, b) => b.SoldCount - a.SoldCount)
           .slice(0, 6);
         setFoods(topFoods);

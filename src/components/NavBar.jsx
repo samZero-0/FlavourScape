@@ -20,9 +20,9 @@ const Navbar = () => {
           <div className="navbar-start">
           <Link to="/" className="btn btn-ghost text-xl">
             <img
-              src="/logo.png"
+              src="/logo-removebg-preview.png"
               alt="Logo"
-              className=" hidden md:block w-[200px]"
+              className="  md:block w-[200px]"
             />
         
             </Link>
@@ -58,11 +58,7 @@ const Navbar = () => {
                   tabIndex={0}
                   className="menu dropdown-content bg-base-200 rounded-box z-[1] mt-2 w-52 p-2 shadow"
                 >
-                  <li>
-                    <Link to="/profile">
-                      Profile
-                    </Link>
-                  </li>
+                  
                   <li>
                     <Link to="/myOrders">
                       My orders

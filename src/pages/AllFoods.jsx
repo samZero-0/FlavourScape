@@ -1,12 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Search, ChefHat } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../providers/AuthProvider';
 
 const AllFoods = () => {
   const [foods, setFoods] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
 
+  const {user} = useContext(AuthContext);
+  const currentUserEmail = user?.email;
   useEffect(() => {
     // Scroll to the top when the component mounts
     window.scrollTo(0, 0);
@@ -17,8 +20,17 @@ const AllFoods = () => {
     fetch('https://assignment-11-flame.vercel.app/allFoods')
       .then(res => res.json())
       .then(data => {
-        setFoods(data);
-        setLoading(false);
+        if(!user){
+          setFoods(data)
+          setLoading(false);
+        }
+        else{
+          const filteredFoods = data.filter(food => food.addedByEmail !== currentUserEmail);
+          setFoods(filteredFoods);
+          setLoading(false);
+        }
+        
+        
       });
   }, []);
 

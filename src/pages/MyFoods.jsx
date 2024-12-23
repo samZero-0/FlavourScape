@@ -2,12 +2,13 @@
 import { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
 
 const MyFoods= () => {
   const [myFoods, setMyFoods] = useState([]);
   const [selectedFood, setSelectedFood] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+  const [loading,setLoading] = useState(false);
     const {user} = useContext((AuthContext));
 
   useEffect(() => {
@@ -17,10 +18,10 @@ const MyFoods= () => {
   }, []);
 
   const handleUpdate = (e, foodId) => {
+    setLoading(true)
     e.preventDefault();
     const formData = new FormData(e.target);
     const updatedFood = {
-      id: foodId,
       FoodName: formData.get('foodName'),
       Price: parseFloat(formData.get('price')),
       Quantity: parseInt(formData.get('quantity')),
@@ -29,17 +30,21 @@ const MyFoods= () => {
       foodCategory: formData.get('foodCategory')
     };
 
-    setMyFoods(foods => 
-      foods.map(food => 
-        food.id === foodId ? updatedFood : food
-      )
-    );
-    setIsModalOpen(false);
-    setSelectedFood(null);
+    axios.patch(`https://assignment-11-flame.vercel.app/allFoods/update/${foodId}`,updatedFood)
+    .then(res=> {
+      setLoading(false)
+      toast.success("Updated Successfully")
+      setIsModalOpen(false);
+      setSelectedFood(null);
+      window.location.reload();
+    })
+    
+    
   };
 
   return (
     <div className="min-h-screen py-12 px-4">
+      <ToastContainer></ToastContainer>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
@@ -107,7 +112,7 @@ const MyFoods= () => {
                   </button>
                 </div>
 
-                <form onSubmit={(e) => handleUpdate(e, selectedFood.id)} className="space-y-4">
+                <form onSubmit={(e) => handleUpdate(e, selectedFood._id)} className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Food Name</label>
                     <input
@@ -187,12 +192,14 @@ const MyFoods= () => {
                     >
                       Cancel
                     </button>
-                    <button
-                      type="submit"
-                      className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600"
-                    >
-                      Update Food
-                    </button>
+                   {
+                    loading? <span className="loading loading-spinner text-error"></span> :  <button
+                    type="submit"
+                    className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600"
+                  >
+                    Update Food
+                  </button>
+                   }
                   </div>
                 </form>
               </div>
