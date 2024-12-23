@@ -3,17 +3,19 @@ import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AiOutlineLogin } from "react-icons/ai";
 import { AuthContext } from "../providers/AuthProvider";
+import { DarkModeSwitch } from "react-toggle-dark-mode";
 
 
 
 const Navbar = () => {
   const [hamburger, setHamburger] = useState(false);
   const { user, logOut } = useContext(AuthContext)
+  const {isDarkMode,toggleDarkMode} = useContext(AuthContext);
 
 
 
   return (
-    <section className="sticky top-0 z-50 bg-white backdrop-blur-md bg-white/60">
+    <section className=" sticky top-0 z-50 backdrop-blur-lg bg-white/30 dark:bg-black/60">
       <section className="md:w-11/12 md:mx-auto">
         <div className="navbar">
           {/* Navbar Start */}
@@ -30,7 +32,7 @@ const Navbar = () => {
 
           {/* Navbar Center */}
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1 text-lg">
+            <ul className="menu menu-horizontal px-1 text-lg dark:text-white">
               <li>
                 <Link to="/">Home</Link>
               </li>
@@ -45,7 +47,16 @@ const Navbar = () => {
 
           {/* Navbar End */}
           <div className="navbar-end">
-        
+
+
+          <div className="md:mr-8 mr-3">
+            <DarkModeSwitch
+           className=" "
+            checked={isDarkMode}
+            onChange={toggleDarkMode}
+            size={30}
+          />
+            </div>
 
             {user && user.email ? (
               <div className="dropdown dropdown-end">
@@ -56,7 +67,7 @@ const Navbar = () => {
                 </div>
                 <ul
                   tabIndex={0}
-                  className="menu dropdown-content bg-base-200 rounded-box z-[1] mt-2 w-52 p-2 shadow"
+                  className="menu dropdown-content bg-base-200 rounded-box z-[50] mt-2 w-52 p-2 shadow"
                 >
                   
                   <li>

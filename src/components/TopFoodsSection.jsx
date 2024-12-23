@@ -8,24 +8,29 @@ const TopFoodsSection = () => {
   const [foods, setFoods] = useState([]);
   const {user} = useContext(AuthContext);
   const currentUserEmail = user?.email;
-
   useEffect(() => {
     axios.get('https://assignment-11-flame.vercel.app/allFoods')
       .then(res => {
+        let foods = res.data;
+  
+        
+        if (currentUserEmail) {
+          foods = foods.filter(food => food.addedByEmail !== currentUserEmail);
+        }
+  
         // Sort by SoldCount and get top 6
-        const topFoods = res.data
-         .filter(food => food.addedByEmail !== currentUserEmail)
-          .sort((a, b) => b.SoldCount - a.SoldCount)
-          .slice(0, 6);
+        const topFoods = foods.sort((a, b) => b.SoldCount - a.SoldCount).slice(0, 6);
         setFoods(topFoods);
-      });
-  }, []);
+      })
+      .catch(err => console.error(err));
+  }, [currentUserEmail]); // Include currentUserEmail in the dependency array if it might change
+  
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-16">
       {/* Section Header */}
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
           Most Popular Dishes
         </h2>
         <div className="flex items-center justify-center gap-2">
@@ -38,7 +43,7 @@ const TopFoodsSection = () => {
       {/* Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {foods.map((food) => (
-          <div key={food._id} className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <div key={food._id} className="group bg-white dark:bg-transparent dark:border  rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
             {/* Image Container */}
             <div className="relative h-64 overflow-hidden">
               <img
@@ -54,7 +59,7 @@ const TopFoodsSection = () => {
             {/* Content */}
             <div className="p-6">
               <div className="flex items-center justify-between mb-3">
-                <h3 className="text-xl font-bold text-gray-900 truncate">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white truncate">
                   {food.FoodName}
                 </h3>
                 <div className="flex items-center gap-1 text-orange-500">
@@ -63,7 +68,7 @@ const TopFoodsSection = () => {
                 </div>
               </div>
 
-              <p className="text-gray-600 mb-4 line-clamp-2 h-14">
+              <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2 h-14">
                 {food.Description}
               </p>
 

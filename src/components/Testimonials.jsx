@@ -36,7 +36,7 @@ const Testimonials = () => {
           <p className="text-orange-500 font-medium tracking-wide mb-4">
             TESTIMONIALS
           </p>
-          <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-serif text-gray-900 dark:text-white mb-6">
             What Our Customers Say
           </h2>
           <div className="w-20 h-1 bg-orange-500 mx-auto"></div>
@@ -52,8 +52,8 @@ const Testimonials = () => {
 
             {/* Testimonial Content */}
             <div className="max-w-3xl text-center">
-              <p className="text-xl text-gray-600 italic mb-8">
-                "{testimonials[activeTestimonial].quote}"
+              <p className="text-xl text-gray-600 dark:text-gray-300 italic mb-8">
+                {testimonials[activeTestimonial].quote}
               </p>
 
               <div className="flex justify-center mb-4">
@@ -69,7 +69,7 @@ const Testimonials = () => {
                   className="w-16 h-16 rounded-full object-cover border-2 border-orange-500"
                 />
                 <div className="text-left">
-                  <h4 className="font-medium text-gray-900">
+                  <h4 className="font-medium text-gray-900 dark:text-white">
                     {testimonials[activeTestimonial].name}
                   </h4>
                   <p className="text-gray-500 text-sm">

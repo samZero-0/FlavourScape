@@ -76,7 +76,7 @@ const Purchase = () => {
       <ToastContainer />
       
       <div className="max-w-3xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div className="bg-white dark:bg-transparent dark:border rounded-2xl shadow-xl overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-to-r from-orange-500 to-orange-600 px-8 py-6">
             <h1 className="text-2xl font-bold text-white">Purchase Food Item</h1>
@@ -84,23 +84,23 @@ const Purchase = () => {
           </div>
 
           {/* Food Image and Basic Info */}
-          <div className="flex items-center gap-6 p-8 bg-orange-50">
+          <div className="flex items-center gap-6 p-8 bg-orange-50 dark:bg-transparent">
             <img 
               src={food.Image} 
               alt={food.FoodName}
               className="w-32 h-32 object-cover rounded-lg shadow-md"
             />
             <div>
-              <h2 className="text-2xl font-semibold text-gray-800">{food.FoodName}</h2>
+              <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">{food.FoodName}</h2>
               <p className="text-lg font-medium text-orange-600 mt-1">${food.Price}</p>
               <div className="mt-2 flex items-center gap-2">
-                <span className="text-sm text-gray-600">Available:</span>
+                <span className="text-sm text-gray-600 dark:text-gray-300">Available:</span>
                 {notavailstatus ? (
                   <span className="text-red-600 font-medium text-sm bg-red-50 px-2 py-1 rounded">
                     Out of Stock
                   </span>
                 ) : (
-                  <span className="text-green-600 font-medium text-sm bg-green-50 px-2 py-1 rounded">
+                  <span className="text-green-600 font-medium text-sm bg-green-50 dark:bg-orange-50 px-2 py-1 rounded">
                     {quantity1} items left
                   </span>
                 )}
@@ -112,7 +112,7 @@ const Purchase = () => {
           <form onSubmit={handleSubmit} className="p-8 space-y-6">
             {/* Quantity Input */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                 Quantity
               </label>
               <input
@@ -121,34 +121,34 @@ const Purchase = () => {
                 placeholder="Enter quantity"
                 min="1"
                 max={food.Quantity}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors dark:bg-transparent dark:text-white"
               />
             </div>
 
             {/* Buyer Information */}
-            <div className="bg-gray-50 rounded-xl p-6 space-y-4">
+            <div className="bg-gray-50 dark:bg-transparent rounded-xl p-6 space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <label className="block text-sm text-gray-600">Buyer Name</label>
-                  <p className="font-medium text-gray-900">{user.displayName}</p>
+                  <label className="block text-sm text-gray-600 dark:text-white">Buyer Name</label>
+                  <p className="font-medium text-gray-900 dark:text-white">{user.displayName}</p>
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-600">Buyer Email</label>
-                  <p className="font-medium text-gray-900">{user.email}</p>
+                  <label className="block text-sm text-gray-600 dark:text-white">Buyer Email</label>
+                  <p className="font-medium text-gray-900 dark:text-white">{user.email}</p>
                 </div>
               </div>
               
               <div>
-                <label className="block text-sm text-gray-600">Purchase Date</label>
-                <p className="font-medium text-gray-900">{currentDate}</p>
+                <label className="block text-sm text-gray-600 dark:text-white">Purchase Date</label>
+                <p className="font-medium text-gray-900 dark:text-white">{currentDate}</p>
               </div>
             </div>
 
             {/* Order Summary */}
             <div className="border-t pt-6">
               <div className="flex justify-between items-center mb-4">
-                <span className="text-gray-600">Subtotal</span>
-                <span className="text-lg font-medium">${food.Price}</span>
+                <span className="text-gray-600 dark:text-white">Subtotal</span>
+                <span className="text-lg font-medium dark:text-white">${food.Price}</span>
               </div>
               
               {/* Purchase Button */}

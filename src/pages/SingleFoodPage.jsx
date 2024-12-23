@@ -12,7 +12,7 @@ const SingleFoodPage = () => {
 
     return (
       <div className=" min-h-screen py-8">
-        <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="max-w-7xl mx-auto bg-white dark:bg-transparent dark:border rounded-lg shadow-lg overflow-hidden">
           <div className="md:flex flex-col">
             <div className="md:flex-shrink-0 w-full">
               <img
@@ -25,28 +25,28 @@ const SingleFoodPage = () => {
               <div className="uppercase tracking-wide text-sm text-orange-500 font-semibold">
                 {food.Chef}
               </div>
-              <h1 className="mt-2 text-3xl leading-8 font-bold text-gray-900">
+              <h1 className="mt-2 text-3xl leading-8 font-bold text-gray-900 dark:text-white">
                 {food.FoodName}
               </h1>
-              <p className="mt-2 text-gray-600">{food.Description}</p>
+              <p className="mt-2 text-gray-600 dark:text-gray-300">{food.Description}</p>
               <div className="mt-4">
                 <span className="text-orange-500 font-bold text-xl">
                   ${food.Price.toFixed(2)}
                 </span>
-                <span className="ml-2 text-gray-600">
+                <span className="ml-2 text-gray-600 dark:text-gray-300">
                   Quantity: {food.Quantity}
                 </span>
               </div>
               <div className="mt-4">
-                <h2 className="text-lg font-semibold text-gray-900">Ingredients</h2>
-                <ul className="mt-2 list-disc list-inside text-gray-600">
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Ingredients</h2>
+                <ul className="mt-2 list-disc list-inside text-gray-600 dark:text-gray-300">
                   {food.Ingredients.map((ingredient, index) => (
                     <li key={index}>{ingredient}</li>
                   ))}
                 </ul>
               </div>
               <div className="mt-4">
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   <span className="font-semibold">Other Info:</span> {food.OtherInfo}
                 </p>
               </div>

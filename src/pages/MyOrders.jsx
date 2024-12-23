@@ -50,7 +50,7 @@ const MyOrders = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {orders.map((order) => (
-          <div key={order._id} className="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div key={order._id} className="bg-white dark:bg-transparent dark:border rounded-lg shadow-lg overflow-hidden">
             <img 
               src={order.image} 
               alt={order.foodname}
@@ -59,7 +59,7 @@ const MyOrders = () => {
             
             <div className="p-6">
               <div className="flex justify-between items-start mb-4">
-                <h2 className="text-xl font-semibold text-gray-800">{order.foodname}</h2>
+                <h2 className="text-xl font-semibold text-gray-800 dark:text-white">{order.foodname}</h2>
                  <button
                   onClick={() => handleDeleteOrder(order._id)}
                   className="text-red-500 hover:text-red-700"
@@ -82,16 +82,16 @@ const MyOrders = () => {
               </div>
               
               <div className="space-y-2">
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-white">
                   <span className="font-semibold">Price:</span> ${order.foodPrice}
                 </p>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-white">
                   <span className="font-semibold">Quantity:</span> {order.quantityForm}
                 </p>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-white">
                   <span className="font-semibold">Order Date:</span> {moment(order.date).format('MMMM Do YYYY, h:mm a')}
                 </p>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-white">
                   <span className="font-semibold">Buyer:</span> {order.BuyerName}
                 </p>
               </div>

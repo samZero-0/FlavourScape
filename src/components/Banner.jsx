@@ -37,9 +37,9 @@ export default function Banner() {
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
-          <div className="relative h-full w-full">
+          <div className="relative h-full w-full " >
             {/* Dark overlay */}
-            <div className="absolute inset-0 bg-black/50 z-10" />
+            <div className="absolute inset-0 bg-black/50 " />
             
             {/* Background Image */}
             <img

@@ -110,7 +110,7 @@ const Gallery = () => {
       </div>
 
      
-      <div className="max-w-7xl mx-auto px-4 py-16">
+      <div className="max-w-8xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {galleryItems.map((item, index) => (
             <div 
@@ -129,7 +129,7 @@ const Gallery = () => {
               <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-75 transition-all duration-300 flex items-center justify-center">
                 <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6">
                   <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-lg text-gray-200 mb-3">User: {user?.displayName}</p>
+                  <p className="text-lg text-gray-200 mb-3 font-bold">{user?.displayName}</p>
                   <p className="text-sm">{item.description}</p>
                 </div>
               </div>

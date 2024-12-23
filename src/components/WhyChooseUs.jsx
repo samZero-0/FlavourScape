@@ -26,10 +26,10 @@ const WhyChooseUs = () => {
         <p className="text-orange-500 font-medium tracking-wide mb-4">
           FEATURES
         </p>
-        <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">
+        <h2 className="text-4xl md:text-5xl font-serif text-gray-900 dark:text-white mb-6">
           Why people choose us?
         </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
         Quality, taste, affordability, and exceptional customer-focused service!
         </p>
       </div>
@@ -46,10 +46,10 @@ const WhyChooseUs = () => {
             </div>
 
             {/* Content */}
-            <h3 className="text-2xl font-serif text-gray-900 mb-4">
+            <h3 className="text-2xl font-serif text-gray-900 dark:text-white mb-4">
               {feature.title}
             </h3>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
               {feature.description}
             </p>
           </div>

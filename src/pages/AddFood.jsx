@@ -56,7 +56,7 @@ const AddFood = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-12">
+    <div className="min-h-screen bg-gray-50 dark:bg-transparent pb-12">
       {/* Header Section */}
       <div className="bg-gradient-to-r from-orange-500 to-orange-600 py-12">
         <ToastContainer></ToastContainer>
@@ -73,56 +73,59 @@ const AddFood = () => {
 
       {/* Form Section */}
       <div className="max-w-4xl mx-auto px-4 -mt-8">
-        <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm p-8">
+        <form onSubmit={handleSubmit} className="bg-white dark:bg-[#121212] rounded-xl shadow-sm p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Food Name */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                 Food Name
               </label>
               <input
                 type="text"
                 name="foodName"
                 required
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent dark:text-white dark:bg-transparent"
                 placeholder="Enter food name"
               />
             </div>
 
             {/* Food Image URL */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white  mb-2">
                 Food Image URL
               </label>
               <input
                 type="url"
                 name="foodImage"
                 required
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent dark:text-white dark:bg-transparent"
                 placeholder="Enter image URL"
               />
             </div>
 
             {/* Food Category */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white  mb-2">
                 Food Category
               </label>
               <select
-                name="foodCategory"
-                required
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-              >
-                <option value="">Select category</option>
-                {foodCategories.map(category => (
-                  <option key={category} value={category}>{category}</option>
-                ))}
-              </select>
+                  name="foodCategory"
+                  required
+                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-transparent dark:bg-transparent text-black dark:text-white appearance-none"
+                >
+                  <option value="" className="dark:text-white dark:bg-transparent">Select category</option>
+                  {foodCategories.map((category) => (
+                    <option key={category} value={category} className="bg-transparent dark:bg-black dark:text-white">
+                      {category}
+                    </option>
+                  ))}
+                </select>
+
             </div>
 
             {/* Quantity */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                 Quantity Available
               </label>
               <input
@@ -130,14 +133,14 @@ const AddFood = () => {
                 name="quantity"
                 min="1"
                 required
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent dark:text-white dark:bg-transparent"
                 placeholder="Enter quantity"
               />
             </div>
 
             {/* Price */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2 dark:text-white ">
                 Price ($)
               </label>
               <input
@@ -146,28 +149,28 @@ const AddFood = () => {
                 min="0.01"
                 step="0.01"
                 required
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent dark:text-white dark:bg-transparent"
                 placeholder="Enter price"
               />
             </div>
 
             {/* Food Origin */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                 Food Origin (Country)
               </label>
               <input
                 type="text"
                 name="foodOrigin"
                 required
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent dark:text-white dark:bg-transparent"
                 placeholder="Enter country of origin"
               />
             </div>
 
             {/* Added By (Read-only) */}
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white dark:bg-transparent mb-2">
                 Added By
               </label>
               <div className="flex gap-4">
@@ -175,55 +178,55 @@ const AddFood = () => {
                   type="text"
                   value={user.displayName}
                   readOnly
-                  className="flex-1 px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg"
+                  className="flex-1 px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg dark:text-white dark:bg-transparent"
                 />
                 <input
                   type="email"
                   value={user.email}
                   readOnly
-                  className="flex-1 px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg"
+                  className="flex-1 px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg dark:text-white dark:bg-transparent"
                 />
               </div>
             </div>
 
             {/* Ingredients */}
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2 dark:text-white ">
                 Ingredients
               </label>
               <textarea
                 name="ingredients"
                 required
                 rows="3"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent dark:text-white dark:bg-transparent"
                 placeholder="List the ingredients (comma separated)"
               />
             </div>
 
             {/* Making Procedure */}
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2 dark:text-white ">
                 Making Procedure
               </label>
               <textarea
                 name="makingProcedure"
                 required
                 rows="4"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent dark:text-white dark:bg-transparent"
                 placeholder="Describe the cooking procedure"
               />
             </div>
 
             {/* Description */}
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2 dark:text-white ">
                 Short Description
               </label>
               <textarea
                 name="description"
                 required
                 rows="3"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent dark:text-white dark:bg-transparent"
                 placeholder="Enter a short description of the food item"
               />
             </div>

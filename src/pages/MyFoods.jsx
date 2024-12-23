@@ -48,14 +48,14 @@ const MyFoods= () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">My Food Items</h1>
-          <p className="text-gray-600">Manage your food listings</p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">My Food Items</h1>
+          <p className="text-gray-600 dark:text-gray-400">Manage your food listings</p>
         </div>
 
         {/* Food Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {myFoods.map((food) => (
-            <div key={food._id} className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+            <div key={food._id} className="bg-white dark:bg-transparent dark:border rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
               <img 
                 src={food.Image} 
                 alt={food.FoodName}
@@ -63,16 +63,16 @@ const MyFoods= () => {
               />
               <div className="p-4">
                 <div className="flex justify-between items-start mb-3">
-                  <h3 className="font-semibold text-lg text-gray-800">{food.FoodName}</h3>
+                  <h3 className="font-semibold text-lg text-gray-800 dark:text-white">{food.FoodName}</h3>
                   <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">
                     ${food.Price}
                   </span>
                 </div>
                 
                 <div className="space-y-2 mb-4">
-                  <p className="text-gray-600 text-sm">Category: {food.foodCategory}</p>
-                  <p className="text-gray-600 text-sm">Quantity: {food.Quantity}</p>
-                  <p className="text-gray-600 text-sm line-clamp-2">{food.Description}</p>
+                  <p className="text-gray-600 text-sm dark:text-gray-300">Category: {food.foodCategory}</p>
+                  <p className="text-gray-600 text-sm dark:text-gray-300">Quantity: {food.Quantity}</p>
+                  <p className="text-gray-600 text-sm line-clamp-2 dark:text-gray-300 h-32">{food.Description}</p>
                 </div>
 
                 <button

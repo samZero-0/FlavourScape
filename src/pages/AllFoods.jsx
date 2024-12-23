@@ -78,7 +78,7 @@ const AllFoods = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredFoods.map((food) => (
-              <div key={food._id} className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+              <div key={food._id} className="bg-white dark:bg-transparent dark:border  rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
                 <div className="relative h-48">
                   <img
                     src={food.Image || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c'}
@@ -93,21 +93,21 @@ const AllFoods = () => {
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-4">
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                         {food.FoodName}
                       </h3>
-                      <p className="text-gray-500 text-sm mb-2">By {food.Chef}</p>
+                      <p className="text-gray-500 dark:text-gray-300 text-sm mb-2">By {food.Chef}</p>
                     </div>
                     <div className="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm">
                       {food.SoldCount} sold
                     </div>
                   </div>
 
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-2 h-20">
                     {food.Description}
                   </p>
 
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between dark:text-gray-300">
                    <div>
                     Quantity: {food.Quantity}
                    </div>
