@@ -6,7 +6,7 @@ import {
 import MainLayout from "../layouts/MainLayout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import NotFound from "../pages/Notfound";
+import NotFound from "../pages/404Page"
 import Homepage from "../pages/Homepage";
 import AllFoods from "../pages/AllFoods";
 import SingleFoodPage from "../pages/SingleFoodPage";

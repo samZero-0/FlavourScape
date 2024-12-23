@@ -6,6 +6,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const Register = () => {
   
@@ -70,72 +71,125 @@ const Register = () => {
   }
 
   return (
-    <div className="w-full flex justify-center items-center flex-col gap-4 py-12">
-      
-      <ToastContainer />
-      <Helmet>
-        <title>Register</title>
-      </Helmet>
-      <div>
-        <h1 className="text-2xl font-bold">Create an account</h1>
+    <div className="min-h-screen flex items-center justify-center  py-12">
+    <ToastContainer />
+    <Helmet>
+      <title>Register</title>
+    </Helmet>
+  
+    <div className="bg-white dark:bg-transparent  rounded-lg overflow-hidden md:flex w-4/5 lg:w-3/5">
+      {/* Lottie Animation */}
+      <div className="hidden md:flex md:w-1/2 items-center justify-center  p-6">
+        <DotLottieReact
+          src="https://lottie.host/d036fd77-2e19-41c9-9d9a-ea7b23dfd792/8GWv13DLTr.lottie"
+          loop
+          autoplay
+          speed={1}
+          style={{ width: "350px", height: "350px" }}
+        />
       </div>
-      <form className="w-full flex justify-center items-center flex-col gap-4 py-12" onSubmit={handleFormSubmit}>
-        <label className="input input-bordered flex items-center gap-2 md:w-1/4">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-4 w-4 opacity-70">
-            <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
-            <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
-          </svg>
-          <input type="text" className="grow" placeholder="Email" name="email" required />
-        </label>
-        <label className="input input-bordered flex items-center gap-2 md:w-1/4">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-4 w-4 opacity-70">
-            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
-          </svg>
-          <input type="text" className="grow" placeholder="Username" name="name" />
-        </label>
-
-        <label className="input input-bordered flex items-center gap-2 md:w-1/4">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-4 w-4 opacity-70">
-            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
-          </svg>
-          <input type="url" className="grow" placeholder="Enter your Photo URL" name="photo" />
-        </label>
-
-        <label className="input input-bordered flex items-center gap-2 md:w-1/4 relative">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-4 w-4 opacity-70">
-            <path fillRule="evenodd" d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z" clipRule="evenodd" />
-          </svg>
-          <input
-            type={passwordVisible ? "text" : "password"}
-            placeholder="password"
-            className="input pr-10"
-            name="password"
-            required
-          />
+  
+      {/* Form Section */}
+      <div className="w-full md:w-1/2 md:p-8">
+        <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white  mb-6">Create an Account</h1>
+        
+        <form onSubmit={handleFormSubmit} className="space-y-6 dark:border dark:rounded-xl p-6 ">
+          {/* Email */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-white">Email</label>
+            <div className="mt-1 relative rounded-md shadow-sm">
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+          </div>
+  
+          {/* Username */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-white">Username</label>
+            <div className="mt-1 relative rounded-md shadow-sm">
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter your username"
+                required
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+          </div>
+  
+          {/* Photo URL */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-white">Photo URL</label>
+            <div className="mt-1 relative rounded-md shadow-sm">
+              <input
+                type="url"
+                name="photo"
+                placeholder="Enter your photo URL"
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+          </div>
+  
+          {/* Password */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-white">Password</label>
+            <div className="mt-1 relative rounded-md shadow-sm">
+              <input
+                type={passwordVisible ? "text" : "password"}
+                name="password"
+                placeholder="Enter your password"
+                required
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              />
+              <button
+                type="button"
+                onClick={() => setPasswordVisible(!passwordVisible)}
+                className="absolute right-3 top-3 text-gray-600"
+              >
+                {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
+          </div>
+  
+          {/* Submit Button */}
           <button
-            type="button"
-            onClick={() => setPasswordVisible(!passwordVisible)}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xl"
+            type="submit"
+            className="w-full bg-blue-500 text-white text-lg font-bold py-3 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
-            {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+            Register
           </button>
-        </label>
-
-        <div className="form-control mt-6 w-1/4">
-          <button className="btn text-center text-lg font-bold btn-primary" type="submit">Register</button>
-        </div>
-
-        {error && <div className="text-xl font-bold text-red-500">{error}</div>}
-
-        <div className="form-control mt-6">
-          <Link ><button onClick={handleGoogleLogin} className="btn flex items-center text-lg "><FaGoogle /> Login with Google</button></Link>
-        </div>
-
-        <div>
-          <span>Already have an account? <Link to='/login' className="text-blue-700 underline">Log in</Link></span>
-        </div>
-      </form>
+  
+          {/* Error Message */}
+          {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+  
+          {/* Google Sign-In */}
+          <div className="mt-4 text-center">
+            <button
+              type="button"
+              onClick={handleGoogleLogin}
+              className="flex items-center justify-center w-full  text-black dark:text-white border rounded-xl py-2  focus:outline-none"
+            >
+              <FaGoogle className="mr-2" /> Login with Google
+            </button>
+          </div>
+  
+          {/* Already Registered */}
+          <p className="text-center text-sm text-gray-500 mt-4">
+            Already have an account?{" "}
+            <Link to="/login" className="text-blue-500 hover:underline">
+              Log in
+            </Link>
+          </p>
+        </form>
+      </div>
     </div>
+  </div>
+  
   );
 };
 

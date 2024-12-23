@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { Helmet } from "react-helmet";
 
 const Login = () => {
@@ -58,21 +59,35 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center py-5">
+    <div className="flex flex-col justify-center items-center py-12">
       <ToastContainer />
       <Helmet>
         <title>Login</title>
       </Helmet>
 
-      <div className="mt-5">
-        <h1 className="text-2xl font-bold">Sign in</h1>
+      <div className="md:flex w-full gap-12">
+
+      <div className="w-1/2  justify-end md:flex items-center hidden ">
+      <DotLottieReact
+          src={'https://lottie.host/3a441e2f-69c5-4ece-a230-35a36c98383e/KlzZq7oCvm.lottie'}
+          loop
+          autoplay
+          speed={1} 
+          style={{ width: "300px", height: "300px" }}
+        /> 
       </div>
 
-      <div className="card bg-base-100 w-full max-w-md shrink-0 shadow-xl">
+        <div className="md:w-1/2  ">
+
+        <div className="mt-5 flex justify-center w-1/2 py-4">
+        <h1 className="text-2xl font-bold dark:text-white">Sign in</h1>
+      </div>
+
+      <div className="card bg-base-100 dark:bg-transparent dark:border w-full max-w-md shrink-0 shadow-xl">
         <form className="card-body" onSubmit={handleLogin}>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Email</span>
+              <span className="label-text dark:text-white">Email</span>
             </label>
             <input
               
@@ -85,7 +100,7 @@ const Login = () => {
           </div>
           <div className="form-control relative">
             <label className="label">
-              <span className="label-text">Password</span>
+              <span className="label-text dark:text-white">Password</span>
             </label>
             <input
               type={passwordVisible ? "text" : "password"}
@@ -126,6 +141,11 @@ const Login = () => {
           </Link>
         </span>
       </div>
+        </div>
+
+      </div>
+
+     
     </div>
   );
 };
