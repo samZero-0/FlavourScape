@@ -39,7 +39,7 @@ export default function Banner() {
         <SwiperSlide key={index}>
           <div className="relative h-full w-full " >
             {/* Dark overlay */}
-            <div className="absolute inset-0 bg-black/50 " />
+            <div className="absolute inset-0 bg-black/50 z-10" />
             
             {/* Background Image */}
             <img
@@ -67,7 +67,7 @@ export default function Banner() {
                     {slide.description}
                   </p>
                   
-                  <div className="flex gap-4">
+                  <div className="md:flex-row flex flex-col gap-4">
                    <Link to='/allFoods'> <button className="px-8 py-3 bg-orange-500 text-white font-medium rounded-lg hover:bg-orange-600 transition-colors">
                       RESERVATION
                     </button></Link>

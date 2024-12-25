@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { Helmet } from "react-helmet";
+
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const Register = () => {
@@ -73,9 +73,7 @@ const Register = () => {
   return (
     <div className="min-h-screen flex items-center justify-center  py-12">
     <ToastContainer />
-    <Helmet>
-      <title>Register</title>
-    </Helmet>
+   
   
     <div className="bg-white dark:bg-transparent  rounded-lg overflow-hidden md:flex w-4/5 lg:w-3/5">
       {/* Lottie Animation */}

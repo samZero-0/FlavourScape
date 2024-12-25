@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 import Banner from "../components/Banner";
 import ServiceShowcase from "../components/ServiceShowcase";
 import Testimonials from "../components/Testimonials";
@@ -8,6 +9,7 @@ import WhyChooseUs from "../components/WhyChooseUs";
 const Homepage = () => {
     return (
         <div >
+            <ToastContainer></ToastContainer>
             <div className="min-h-screen">
             <Banner></Banner>
             </div>

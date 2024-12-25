@@ -7,7 +7,7 @@ const ServiceShowcase = () => {
     <div className="container mx-auto px-4 py-16 md:py-24">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Image Grid */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
           <div className="relative h-[300px] overflow-hidden rounded-xl">
             <img
               src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800"
