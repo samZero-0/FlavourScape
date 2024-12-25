@@ -8,7 +8,7 @@ const SingleFoodPage = () => {
       }, []);
       
     const food = useLoaderData();
-    console.log(food._id);
+    
 
     return (
       <div className=" min-h-screen py-8">

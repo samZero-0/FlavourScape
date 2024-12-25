@@ -60,7 +60,8 @@ const MyFoods= () => {
         </div>
 
         {/* Food Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          myFoods.length === 0 ? <div>No foods added </div> : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {myFoods.map((food) => (
             <div key={food._id} className="bg-white dark:bg-transparent dark:border rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
               <img 
@@ -98,6 +99,7 @@ const MyFoods= () => {
             </div>
           ))}
         </div>
+        }
 
         {/* Update Modal */}
         {isModalOpen && selectedFood && (

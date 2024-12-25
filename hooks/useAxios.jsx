@@ -20,10 +20,10 @@ const useAxios = () => {
             return response;
           }, function (error) {
             if(error.status ===401 || error.status ==403){
-                console.log("need to log out");
+                
                 logOut()
                 .then(()=>{
-                    console.log("Logged out user");
+                    
                     navigate('/login')
                 })
             }

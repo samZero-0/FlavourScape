@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import { app } from "../../firebase/firebase.config";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext(null);
 
@@ -31,7 +32,7 @@ const AuthProvider = ({ children }) => {
         try {
             return await createUserWithEmailAndPassword(auth, email, password);
         } catch (error) {
-            console.error("Error creating account:", error);
+            toast.error("Error creating account");  
             throw error;
         } finally {
             setLoading(false);
@@ -43,7 +44,7 @@ const AuthProvider = ({ children }) => {
         try {
             return await signInWithEmailAndPassword(auth, email, password);
         } catch (error) {
-            console.error("Error signing in:", error);
+            toast.error("Error signing in");
             throw error;
         } finally {
             setLoading(false);
@@ -55,7 +56,7 @@ const AuthProvider = ({ children }) => {
         try {
             return await signInWithPopup(auth, provider);
         } catch (error) {
-            console.error("Error with Google sign-in:", error);
+            toast.error("Error signing in with Google");
             throw error;
         } finally {
             setLoading(false);
@@ -67,7 +68,7 @@ const AuthProvider = ({ children }) => {
         try {
             return await signOut(auth);
         } catch (error) {
-            console.error("Error logging out:", error);
+            toast.error("Error logging out");
             throw error;
         } finally {
             setLoading(false);
@@ -77,7 +78,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            console.log('state captured', currentUser?.email)
+            
 
             if(currentUser?.email){
                 const user = {email: currentUser.email};
@@ -89,7 +90,7 @@ const AuthProvider = ({ children }) => {
             }
             else{
                 axios.post('https://assignment-11-flame.vercel.app/logout',{}, {withCredentials:true})
-                .then(res => {console.log(res.data)
+                .then(res => {
                     setLoading(false);
                 })
             }

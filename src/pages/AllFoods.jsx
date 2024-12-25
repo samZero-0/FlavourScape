@@ -11,11 +11,11 @@ const AllFoods = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(5);
   const { count } = useLoaderData();
-  console.log(count);
+
   const totalPages = Math.ceil(count / itemsPerPage);
 
   const pages = [...Array(totalPages).keys()];
-  console.log(pages);
+
 
 
   const handleItemChange = (e) => {

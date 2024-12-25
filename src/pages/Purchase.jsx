@@ -53,7 +53,7 @@ const Purchase = () => {
      if(quantityForm <= food.Quantity &&  quantityForm !== 0){
         axios.post('https://assignment-11-flame.vercel.app/orders',order)
         .then(res=>{
-            console.log(res.data);
+            
             setLoading(false)
             toast.success("Order Successful")
             setQuantity(quan)
@@ -61,7 +61,7 @@ const Purchase = () => {
         })
 
         axios.patch(`https://assignment-11-flame.vercel.app/allFoods/${foodID}`, updatedInfo)
-        .then(res=>console.log(res.data))
+        .then(res=> res)
     }
     else{
         toast.error("Please select valid quantity!")

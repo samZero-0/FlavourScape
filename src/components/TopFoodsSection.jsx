@@ -25,7 +25,7 @@ const TopFoodsSection = () => {
         setFoods(topFoods);
         setLoading(false)
       })
-      .catch(err => console.error(err));
+      .catch(err => err);
   }, [currentUserEmail]); 
   
 

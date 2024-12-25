@@ -44,12 +44,12 @@ const AddFood = () => {
             axios.post('https://assignment-11-flame.vercel.app/allFoods',foodData)
             .then(res => {
                 toast.success("Food Added Successfully")
-                console.log(foodData);
+                
                 form.reset();
             })
             
     } catch (error) {
-      console.error('Error adding food:', error);
+     toast.error("Error adding food")
     } finally {
       setLoading(false);
     }
