@@ -3,19 +3,24 @@ import { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
+// import useAxios from '../../hooks/useAxios';
 
 const MyFoods= () => {
   const [myFoods, setMyFoods] = useState([]);
   const [selectedFood, setSelectedFood] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading,setLoading] = useState(false);
+  // const axiosSecure = useAxios();
     const {user} = useContext((AuthContext));
 
   useEffect(() => {
-    axios.get(`https://assignment-11-flame.vercel.app/allFoods/byEmail/${user.email}`)
+    
+
+    axios.get(`https://assignment-11-flame.vercel.app/allFoods/byEmail/${user?.email}`, {withCredentials: true})
     .then(res => setMyFoods(res.data))
-   
+ 
   }, []);
+  
 
   const handleUpdate = (e, foodId) => {
     setLoading(true)
@@ -30,7 +35,9 @@ const MyFoods= () => {
       foodCategory: formData.get('foodCategory')
     };
 
-    axios.patch(`https://assignment-11-flame.vercel.app/allFoods/update/${foodId}`,updatedFood)
+    axios.patch(`https://assignment-11-flame.vercel.app/allFoods/update/${foodId}`,updatedFood ,{
+      withCredentials: true,
+  })
     .then(res=> {
       setLoading(false)
       toast.success("Updated Successfully")

@@ -9,6 +9,7 @@ import {
     signOut,
 } from "firebase/auth";
 import { app } from "../../firebase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -74,14 +75,33 @@ const AuthProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            setLoading(false);
-        });
+            console.log('state captured', currentUser?.email)
+
+            if(currentUser?.email){
+                const user = {email: currentUser.email};
+                
+                axios.post("https://assignment-11-flame.vercel.app/jwt", user, {withCredentials: true})
+                .then(res =>{
+                    setLoading(false);
+                })
+            }
+            else{
+                axios.post('https://assignment-11-flame.vercel.app/logout',{}, {withCredentials:true})
+                .then(res => {console.log(res.data)
+                    setLoading(false);
+                })
+            }
+
+            
+        })
+
         return () => {
-            unSubscribe();
-        };
-    }, [auth]);
+            unsubscribe();
+        }
+    }, [])
+
 
     const userInfo = {
         createAccount,

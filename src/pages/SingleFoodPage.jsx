@@ -41,7 +41,7 @@ const SingleFoodPage = () => {
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Ingredients</h2>
                 <ul className="mt-2 list-disc list-inside text-gray-600 dark:text-gray-300">
                 {Array.isArray(food.Ingredients) ? (
-                            food.ingredients.map((ingredient, index) => (
+                            food.Ingredients.map((ingredient, index) => (
                               <li key={index}>{ingredient}</li>
                             ))
                           ) : (

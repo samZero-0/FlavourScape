@@ -10,7 +10,7 @@ const MyOrders = () => {
   const [loading,setLoading] = useState(false)
   // Sample data - in real app this would come from API
   useEffect(() => {
-    axios.get(`https://assignment-11-flame.vercel.app/orders/${user.email}`)
+    axios.get(`https://assignment-11-flame.vercel.app/orders/${user.email}` ,{withCredentials: true})
     .then(res => setOrders(res.data))
   }, []);
 
