@@ -169,11 +169,11 @@ const AddFood = () => {
             </div>
 
             {/* Added By (Read-only) */}
-            <div className="md:col-span-2">
+            <div className="md:col-span-2 ">
               <label className="block text-sm font-medium text-gray-700 dark:text-white dark:bg-transparent mb-2">
                 Added By
               </label>
-              <div className="flex gap-4">
+              <div className="md:flex-row flex flex-col gap-4">
                 <input
                   type="text"
                   value={user.displayName}
