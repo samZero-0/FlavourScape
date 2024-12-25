@@ -129,10 +129,10 @@ const handleNext= () =>{
                       <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                         {food.FoodName}
                       </h3>
-                      <p className="text-gray-500 dark:text-gray-300 text-sm mb-2">By {food.Chef}</p>
+                      <p className="text-gray-500 dark:text-gray-300 text-sm mb-2">By {food.Chef || food.addedByName}</p>
                     </div>
                     <div className="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm">
-                      {food.SoldCount} sold
+                      {food.SoldCount || 'n/a' } sold
                     </div>
                   </div>
 
