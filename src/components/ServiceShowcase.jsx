@@ -1,5 +1,6 @@
 // ServiceShowcase.jsx
 import { Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const ServiceShowcase = () => {
   return (
@@ -25,11 +26,11 @@ const ServiceShowcase = () => {
 
         {/* Content */}
         <div className="space-y-8">
-          <h2 className="text-4xl font-bold text-gray-900 leading-tight">
+          <h2 className="text-4xl font-bold text-gray-900 leading-tight dark:text-white">
             EXCEPTIONAL DINING & CULINARY EXCELLENCE
           </h2>
 
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 text-lg dark:text-gray-300">
             Experience the perfect blend of ambiance and gastronomy in our award-winning restaurant. Every dish tells a story of passion, creativity, and the finest ingredients.
           </p>
 
@@ -38,21 +39,21 @@ const ServiceShowcase = () => {
               <div className="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
                 <Check className="w-4 h-4 text-green-600" />
               </div>
-              <p className="text-gray-700">Handcrafted dishes using locally-sourced, seasonal ingredients</p>
+              <p className="text-gray-700 dark:text-gray-400">Handcrafted dishes using locally-sourced, seasonal ingredients</p>
             </div>
 
             <div className="flex items-center gap-3">
               <div className="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
                 <Check className="w-4 h-4 text-green-600" />
               </div>
-              <p className="text-gray-700">Expert sommeliers and curated wine selection</p>
+              <p className="text-gray-700 dark:text-gray-400">Expert sommeliers and curated wine selection</p>
             </div>
 
             <div className="flex items-center gap-3">
               <div className="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
                 <Check className="w-4 h-4 text-green-600" />
               </div>
-              <p className="text-gray-700">Intimate atmosphere with exceptional service</p>
+              <p className="text-gray-700 dark:text-gray-400">Intimate atmosphere with exceptional service</p>
             </div>
           </div>
 
@@ -63,22 +64,18 @@ const ServiceShowcase = () => {
               className="w-12 h-12 rounded-full object-cover"
             />
             <div>
-              <h4 className="font-semibold text-gray-900">Marcus Laurent</h4>
-              <p className="text-gray-600">Executive Chef</p>
+              <h4 className="font-semibold text-gray-900 dark:text-white">Marcus Laurent</h4>
+              <p className="text-gray-600 dark:text-gray-300">Executive Chef</p>
             </div>
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPpJL6IJSVPxjHH24CZRdWysYRj-moK5Lzlg&s"
-              alt="Chef's signature"
-              className="h-12 ml-auto opacity-75"
-            />
+            
           </div>
 
-          <a
-            href="/menu"
+          <Link 
+            to='/allFoods'
             className="inline-block px-8 py-4 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors"
           >
             EXPLORE OUR MENU
-          </a>
+          </Link>
         </div>
       </div>
     </div>

@@ -39,7 +39,8 @@ import Gallery from "../pages/Gallery";
         },
         {
           path: 'allFoods',
-          element: <AllFoods></AllFoods>
+          element: <AllFoods></AllFoods>,
+          loader: () => fetch('https://assignment-11-flame.vercel.app/foodCount')
         },
        
         {

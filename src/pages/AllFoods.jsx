@@ -1,12 +1,47 @@
 import { useState, useEffect, useContext } from 'react';
 import { Search, ChefHat } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 
 const AllFoods = () => {
   const [foods, setFoods] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const { count } = useLoaderData();
+  console.log(count);
+  const totalPages = Math.ceil(count / itemsPerPage);
+
+  const pages = [...Array(totalPages).keys()];
+  console.log(pages);
+
+
+  const handleItemChange = (e) => {
+    const val = parseInt(e.target.value);
+    setItemsPerPage(val);
+    setCurrentPage(0); 
+};
+
+const handlePageNumberChange = (page) => {
+    setCurrentPage(page);
+    
+};
+
+const handlePrev = () =>{
+    if(currentPage>0){
+        setCurrentPage(currentPage-1)
+    }
+}
+
+const handleNext= () =>{
+    if(currentPage<pages.length -1){
+        setCurrentPage(currentPage+1)
+    }
+}
+
+  
 
   const {user} = useContext(AuthContext);
   const currentUserEmail = user?.email;
@@ -17,22 +52,20 @@ const AllFoods = () => {
 
 
   useEffect(() => {
-    fetch('https://assignment-11-flame.vercel.app/allFoods')
-      .then(res => res.json())
-      .then(data => {
-        if(!user){
-          setFoods(data)
-          setLoading(false);
-        }
-        else{
-          const filteredFoods = data.filter(food => food.addedByEmail !== currentUserEmail);
-          setFoods(filteredFoods);
-          setLoading(false);
-        }
-        
-        
-      });
-  }, []);
+    setLoading(true);
+    fetch(`https://assignment-11-flame.vercel.app/allFoods?page=${currentPage}&size=${itemsPerPage}`)
+        .then((res) => res.json())
+        .then((data) => {
+            if (!user) {
+                setFoods(data);
+            } else {
+                const filteredFoods = data.filter(food => food.addedByEmail !== currentUserEmail);
+                setFoods(filteredFoods);
+            }
+            setLoading(false);
+        });
+}, [currentPage, itemsPerPage, user, currentUserEmail]);
+
 
   const filteredFoods = foods.filter(food => 
     food.FoodName.toLowerCase().includes(searchTerm.toLowerCase())
@@ -132,6 +165,54 @@ const AllFoods = () => {
           </div>
         )}
       </div>
+
+        {/* pagination */}
+        <div className="flex flex-col items-center my-6">
+    <p className="mb-4 dark:text-white">Current Page: {currentPage + 1}</p>
+    <div className="flex gap-2">
+        <button
+            onClick={handlePrev}
+            disabled={currentPage === 0}
+            className={`px-4 py-2 rounded-lg ${currentPage === 0 ? 'bg-gray-300' : 'bg-orange-500 text-white hover:bg-orange-600'}`}
+        >
+            Prev
+        </button>
+
+        {pages.map(page => (
+            <button
+                key={page}
+                onClick={() => handlePageNumberChange(page)}
+                className={`px-4 py-2 rounded-lg ${
+                    currentPage === page ? 'bg-orange-600 text-white' : 'bg-gray-200 hover:bg-orange-500'
+                }`}
+            >
+                {page + 1}
+            </button>
+        ))}
+
+        <button
+            onClick={handleNext}
+            disabled={currentPage === pages.length - 1}
+            className={`px-4 py-2 rounded-lg ${currentPage === pages.length - 1 ? 'bg-gray-300' : 'bg-orange-500 text-white hover:bg-orange-600'}`}
+        >
+            Next
+        </button>
+    </div>
+
+    <select
+        value={itemsPerPage}
+        onChange={handleItemChange}
+        className="mt-4 px-4 py-2 border border-gray-300 rounded-lg"
+    >
+        <option value="5">5</option>
+        <option value="10">10</option>
+       
+    </select>
+</div>
+
+
+
+
     </div>
   );
 };
