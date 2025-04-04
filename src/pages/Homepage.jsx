@@ -4,6 +4,7 @@ import ServiceShowcase from "../components/ServiceShowcase";
 import Testimonials from "../components/Testimonials";
 import TopFoodsSection from "../components/TopFoodsSection";
 import WhyChooseUs from "../components/WhyChooseUs";
+import Ace from "../components/Ace";
 
 
 const Homepage = () => {
@@ -13,6 +14,10 @@ const Homepage = () => {
             <div className="min-h-screen">
             <Banner></Banner>
             </div>
+
+                {/* <div>
+                    <Ace></Ace>
+                </div> */}
 
             <div>
                 <TopFoodsSection></TopFoodsSection>
