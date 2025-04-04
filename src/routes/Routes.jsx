@@ -16,6 +16,7 @@ import MyOrders from "../pages/MyOrders";
 import AddFood from "../pages/AddFood";
 import MyFoods from "../pages/MyFoods";
 import Gallery from "../pages/Gallery";
+import Chat from "../pages/Chatbot";
 
 
   export const router = createBrowserRouter([
@@ -68,6 +69,10 @@ import Gallery from "../pages/Gallery";
         {
           path: 'gallery',
           element: <Gallery></Gallery>
+        },
+        {
+          path: 'chat',
+          element: <Chat></Chat>
         },
 
 
