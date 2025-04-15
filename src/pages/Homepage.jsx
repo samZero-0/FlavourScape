@@ -5,6 +5,8 @@ import Testimonials from "../components/Testimonials";
 import TopFoodsSection from "../components/TopFoodsSection";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Ace from "../components/Ace";
+import NewsletterSubscription from "../components/Newsletter";
+import FeaturedBlog from "../components/Featured";
 
 
 const Homepage = () => {
@@ -34,7 +36,14 @@ const Homepage = () => {
             <div>
                 <Testimonials></Testimonials>
             </div>
+            
+            <div>
+                    <NewsletterSubscription></NewsletterSubscription>
+            </div>
 
+            <div>
+                    <FeaturedBlog></FeaturedBlog>
+            </div>
            
 
 
