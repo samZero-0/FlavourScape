@@ -16,8 +16,8 @@ const NewsletterSubscription = () => {
     return (
         <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-3xl font-bold text-gray-800 mb-4">Stay Updated</h2>
-                <p className="text-gray-600 mb-8 text-lg">
+                <h2 className="text-3xl font-bold text-gray-800 mb-4 dark:text-white">Stay Updated</h2>
+                <p className="text-gray-600 mb-8 text-lg dark:text-gray-300">
                     Subscribe to our newsletter for exclusive offers, new menu items, and culinary inspiration.
                 </p>
                 
@@ -44,7 +44,7 @@ const NewsletterSubscription = () => {
                             </button>
                         </form>
                     )}
-                    <p className="text-sm text-gray-500 mt-4">
+                    <p className="text-sm text-gray-500 mt-4 dark:text-gray-300">
                         We respect your privacy and will never share your information.
                     </p>
                 </div>

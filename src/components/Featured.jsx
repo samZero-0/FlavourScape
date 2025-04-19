@@ -31,10 +31,10 @@ const FeaturedBlog = () => {
     ]);
 
     return (
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 mt-9">
             <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-800 mb-4">From Our Blog</h2>
-                <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+                <h2 className="text-3xl font-bold text-gray-800 mb-4 dark:text-white">From Our Blog</h2>
+                <p className="text-gray-600 max-w-2xl mx-auto text-lg dark:text-gray-300">
                     Culinary insights, recipes, and stories from our team
                 </p>
             </div>
@@ -65,7 +65,7 @@ const FeaturedBlog = () => {
                 ))}
             </div>
             
-            <div className="text-center mt-10">
+            <div className="text-center mt-10 p-4">
                 <Link 
                     to="/blog" 
                     className="inline-block px-6 py-3 border-2 border-orange-500 text-orange-500 font-semibold rounded-lg hover:bg-orange-500 hover:text-white transition duration-300"
