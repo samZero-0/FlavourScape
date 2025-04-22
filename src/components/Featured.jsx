@@ -8,7 +8,7 @@ const FeaturedBlog = () => {
             id: 1,
             title: "Seasonal Ingredients: Spring Edition",
             excerpt: "Discover the freshest ingredients this season and how to incorporate them into your meals.",
-            image: "/api/placeholder/600/400",
+            image: "https://pipingpotcurry.com/wp-content/uploads/2021/03/Spring-Produce-Guide-1.jpg",
             date: "April 12, 2025",
             author: "Chef Maria Rodriguez"
         },
@@ -16,7 +16,7 @@ const FeaturedBlog = () => {
             id: 2,
             title: "Farm-to-Table: Our Commitment to Local Producers",
             excerpt: "Learn about our partnerships with local farmers and how we ensure the highest quality ingredients.",
-            image: "/api/placeholder/600/400",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShgvdNgwu2p2Ue9ttSLRzDKGZZkPZH-Vsj6A&s",
             date: "April 5, 2025",
             author: "James Thompson"
         },
@@ -24,7 +24,7 @@ const FeaturedBlog = () => {
             id: 3,
             title: "Behind the Scenes: Inside Our Kitchen",
             excerpt: "Take a peek at our culinary process and meet the passionate team behind your favorite dishes.",
-            image: "/api/placeholder/600/400",
+            image: "https://media.istockphoto.com/id/1405011860/video/filming-a-cooking-show.jpg?s=640x640&k=20&c=ouFns9kIqVyOnwk8EzMPGrVQx4prodbc-74pvE1fKgw=",
             date: "March 27, 2025",
             author: "Emma Chen"
         }
@@ -41,16 +41,16 @@ const FeaturedBlog = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {blogPosts.map((post) => (
-                    <div key={post.id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <div key={post.id} className="bg-white dark:bg-transparent rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 border">
                         <img 
                             src={post.image} 
                             alt={post.title} 
                             className="w-full h-48 object-cover"
                         />
                         <div className="p-6">
-                            <p className="text-sm text-gray-500 mb-2">{post.date} • {post.author}</p>
-                            <h3 className="text-xl font-bold text-gray-800 mb-3">{post.title}</h3>
-                            <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                            <p className="text-sm text-gray-500 mb-2 dark:text-gray-400">{post.date} • {post.author}</p>
+                            <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">{post.title}</h3>
+                            <p className="text-gray-600 mb-4 dark:text-gray-300 ">{post.excerpt}</p>
                             <Link 
                                 to={`/blog/${post.id}`} 
                                 className="text-orange-500 font-medium inline-flex items-center hover:text-orange-600"
