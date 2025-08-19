@@ -8,6 +8,7 @@ const SingleFoodPage = () => {
       }, []);
       
     const food = useLoaderData();
+    console.log(food);
     
 
     return (

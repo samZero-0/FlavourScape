@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { ChefHat, Upload, Utensils } from 'lucide-react';
-import { AuthContext } from '../providers/AuthProvider';
+import { AuthContext } from '../../providers/AuthProvider';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 
